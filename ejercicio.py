@@ -60,7 +60,7 @@ def mostrar_informacion_producto(df, producto, sucursal=None):
             ax.set_ylabel("Unidades vendidas")
             ax.set_title(f"Evolución de Ventas Mensuales - {producto}", fontsize=14)
             ax.legend()
-            plt.xticks(rotation=45, ha='right')
+            plt.xticks(rotation=45, ha='right',fontsize=5)
             plt.grid(True)
 
             st.pyplot(fig)
