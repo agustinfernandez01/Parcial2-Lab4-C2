@@ -36,14 +36,20 @@ def mostrar_informacion_producto(df, producto, sucursal=None):
             unidades_vendidas = df_producto['Unidades_vendidas'].sum()
             ingreso_total = df_producto['Ingreso_total'].sum()
             costo_total = df_producto['Costo_total'].sum()
-
-            precio_promedio = promedio(ingreso_total, unidades_vendidas)
+            
+            # Cálculo del precio promedio y margen promedio
+            precio_promedio = ingreso_total / unidades_vendidas
             margen_promedio = ((ingreso_total - costo_total) / ingreso_total) * 100
-
+            
+            # Formatear los valores de 'precio_promedio' y 'unidades_vendidas' con punto como separador de miles
+            precio_promedio_formateado = f"${precio_promedio:,.2f}".replace(",", ".")
+            unidades_vendidas_formateado = f"{unidades_vendidas:,}".replace(",", ".")
+            
+            # Mostrar los resultados
             st.markdown(f"### {producto}")
-            st.metric("Precio Promedio", f"${precio_promedio:.2f}")
+            st.metric("Precio Promedio", precio_promedio_formateado)
             st.metric("Margen Promedio", f"{margen_promedio:.0f}%")
-            st.metric("Unidades Vendidas", f"{unidades_vendidas:,}")
+            st.metric("Unidades Vendidas", unidades_vendidas_formateado)
 
         with col2:
             df_producto['Año-Mes'] = df_producto['Año'].astype(str) + '-' + df_producto['Mes'].astype(str).str.zfill(2)
