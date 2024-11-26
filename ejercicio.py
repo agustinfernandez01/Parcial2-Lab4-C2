@@ -13,7 +13,7 @@ def mostrar_info_estudiante():
         st.markdown('**Grupo:** C2')
         
          ## Direccion en la que ha sido publicada la aplicacion
-         # URL = 'https://tp8-59130.streamlit.app/'
+         # URL = ''
 
 mostrar_info_estudiante()
 
